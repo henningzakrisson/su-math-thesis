@@ -94,13 +94,25 @@ Change it up if you prefer a different structure.
 This is where one can put the `pdf` files for the papers included in the thesis.
 This is not mandatory and will only matter if you want the page numbering of the thesis
 to be consistent throughout the entire thesis, which will require a bit of
-extra work (see Step 3 in the usage section below).
+extra work (see Step 4 in the usage section below).
 
 ## Usage
 This guide will go through the steps to use the template, from opening it up to 
 compiling the final document and uploading it to the thesis publication tool.
 
-### Step 1: Compile the dummy document
+### Step 1: Copy the template
+The first step is to download the template and copy it to a new folder.
+This can be done using a terminal command like this:
+```bash
+git clone https://github.com/henningzakrisson/su-math-thesis
+copy -r su-math-thesis my_thesis
+cd my_thesis
+```
+Or by downloading the repository as a zip file (Press the green "Code" button and select "Download ZIP"),
+extracting it, and renaming the folder to something like `my_thesis`.
+The `my_thesis` folder is where you will work on your thesis.
+
+### Step 2: Compile the dummy document
 In order to make sure everything works on your system, compile the dummy document.
 I recommend using `pdflatex` for this, using `biber` for the bibliography.
 I also recommend using a `interim` folder for the compilation, as this will generate a lot of files.
@@ -125,7 +137,7 @@ pdflatex -output-directory=interim main.tex
 ```
 for a recompilation.
 
-### Step 2: Write the thesis
+### Step 3: Write the thesis
 This is probably the hardest part.
 The `src` folder is where to put all the source code for the thesis.
 I suggest using a folder structure that makes sense to you, and that you are consistent with it.
@@ -133,7 +145,7 @@ Add chapters, sections, and subsections to the thesis by using the `input` comma
 You can see in the dummy example how this is done.
 If you add new sources, make sure to add them to the `bibliography.bib` file.
 
-### Step 3: Preprocess the papers (optional)
+### Step 4: Preprocess the papers (optional)
 If you want the page numbering to be consistent throughout the entire thesis, you can add the papers to the 
 `src/papers` folder.
 Performing this step  will also include the individual papers in the table of contents.
@@ -160,7 +172,7 @@ Then, add the compiled papers to the `src/papers` folder, and add it to the thes
 in `main.tex`, replacing `Paper X` with the roman numeral number of the paper and `paper_x.pdf` with the name of the `pdf` file.
 An example for this is included in the dummy document.
 
-#### Step 3.1 Removing pages from already compiled papers (optional)
+#### Step 4.1 Removing pages from already compiled papers (optional)
 In case you do not have access to the source files of the papers, the situation is a little more complicated
 since you will have to remove the page numbers from the `pdf` files.
 My suggestion is to create a new `LaTeX` document that includes the papers using the `pdfpages` package,
@@ -170,7 +182,7 @@ I have not finished my general implementation of this to add to this template.
 Note that this way you can also remove annoying headers and footers that are often included
 in digitally published papers.
 
-#### Step 3.2 Removing colored hyperlinks from the papers (optional)
+#### Step 4.2 Removing colored hyperlinks from the papers (optional)
 When printing the thesis, the library will ask you to specify on what pages to print in color.
 This is in order to make figures and plots look good.
 However, many digital publications use colored hyperlinks.
@@ -186,7 +198,7 @@ Run the command in the terminal like this:
 where `output.pdf` is the name of the new file and `input.pdf` is the name of the original file.
 Check that the result looks good, and if it does, use the new file in the thesis.
 
-### Step 4: Compile the final document
+### Step 5: Compile the final document
 When you are done writing the thesis, it is time to compile the final document
 and split it into the various parts that can be uploaded to the thesis publication tool.
 This can be done by compiling as normal and then manually splitting the resulting `pdf` file,
@@ -225,9 +237,9 @@ This will create a number of files in the `out` folder.
 3. `introduction.pdf` - This is the introduction, or the "kappa".
     It starts with the "Part I" title page and ends with the "Part II" title page.
 4. `paper_i.pdf`, `paper_ii.pdf`, ... - These are the papers included in the thesis.
-    If you did not perform Step 3, these files won't be included in the `out` folder.
+    If you did not perform Step 4, these files won't be included in the `out` folder.
 
-### Step 5: Upload to the thesis publication tool
+### Step 6: Upload to the thesis publication tool
 When you have the `pdf` files, you can upload them to the thesis publication tool.
 
 The spikblad/nailing page/abstract will be provided by the _Avhandlingsstöd_ department after registering the thesis
@@ -238,7 +250,7 @@ tool, in that order.
 
 The papers `paper_i.pdf`, `paper_ii.pdf`, ... should be uploaded under the "Papers" section in the tool.
 Make sure to upload them in the correct order.
-If you did not perform Step 3, upload the original `pdf` files of the papers instead.
+If you did not perform Step 4, upload the original `pdf` files of the papers instead.
 
 Check the preview in the tool and make sure that the numberings in the pages and table
 of contents are correct.
