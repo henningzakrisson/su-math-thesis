@@ -9,7 +9,7 @@ import PyPDF2
 def count_papers(toc_content):
     # Regex pattern to match lines with "Paper I" to "Paper IX"
     pattern = (
-        r"\\contentsline \{section\}\{\\numberline \{\d+\.\d+\}Paper [I,V,X]{1,3}\}"
+        r"\\contentsline \{section\}\{Paper [I,V,X]{1,3}\}"
     )
     matches = re.findall(pattern, toc_content)
     return len(matches)
@@ -125,12 +125,12 @@ def main():
         toc_content = f.read()
 
     n_papers = count_papers(toc_content)
+    logging.info(f"Found {n_papers} papers")
 
     # List of titles that extract page numbers should be extracted for
     sections = ["abstract", "frontmatter", "introduction"]
     for i in range(1, n_papers + 1):
         sections.append(f"paper_{i}")
-
     titles = {
         "abstract": "Abstract",
         "frontmatter": "List of papers",
@@ -172,9 +172,15 @@ def main():
             end_pages["frontmatter"] = page_labels[i - 1]
             break
 
-    # The rest of the sections are up until the next one minus three
+    # The introduction is up until the first paper minus one, or to the end
+    if n_papers > 0:
+        end_pages["introduction"] = start_pages["paper_1"] - 1
+    else:
+        end_pages["introduction"] = page_labels[-1]
+
+    # The papers last up until the next one minus three
     # (two for the title page and one for the blank page)
-    for section in sections[2:-1]:
+    for section in sections[3:-1]:
         try:
             end_pages[section] = start_pages[sections[sections.index(section) + 1]] - 3
         except ValueError:
