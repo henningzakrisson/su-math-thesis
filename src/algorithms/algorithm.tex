@@ -1,0 +1,33 @@
+\textbf{Let}
+\begin{itemize}
+	\item \(x\) be a symbol
+	\item \(y\) be another symbol
+	\item \(\mathcal{X}\) be a set
+	\item \(\epsilon_k\), \(k=1,\dots,K\), be a sequence of positive numbers
+\end{itemize}
+
+\textbf{Initialize} \(\hat{y}^{(0)} = \hat{y}\)
+%
+\[
+	\hat{y} = \argmin_{y \in \mathcal{Y}} \sum_{i=1}^n \ell(y;\by_i)
+\]
+%
+
+\textbf{For} \(k = 0,\dots,K-1\):
+\begin{itemize}
+	\item[] \textbf{For} \(\hat{A}_l \in \hat{A}^{(k)}\):
+	\begin{enumerate}
+		\item \textbf{Find}
+		\[
+			\hat{y}^{(k+1)} = \argmin_{y \in \mathcal{Y}} \sum_{i=1}^n \ell(y;\by_i) + \sum_{i=1}^n \left( \hat{A}_l \cdot \nabla \ell(\hat{y}^{(k)};\by_i) \right) \cdot \left( y - \hat{y}^{(k)} \right)
+		\]
+		\item \textbf{Stack}
+		\[
+			\hat{A}^{(k+1)} = \left[ \hat{A}^{(k)} \quad \hat{A}_l \right]
+		\]
+
+		\item \textbf{Clean} the dishes
+	\end{enumerate}
+
+	\item[] \textbf{Return} \(\hat{y}^{(d_{\max})}\)
+\end{itemize}

@@ -1,0 +1,84 @@
+\documentclass[10pt, openright]{book}
+
+% Load packages, set up document style, and define custom commands
+\input{src/packages}
+\input{src/setup_layout}
+\input{src/custom_commands}
+\addbibresource{bibliography.bib}
+
+% Metadata
+\title{My PhD Thesis}
+\author{Doctor Doktorow}
+
+% Document
+\begin{document}
+
+    % Preface stuff
+    \frontmatter
+
+    % Note that the abstract here is just a placeholder.
+    % The printed thesis will replace the abstract with the "spikblad" but it is included
+    % here to keep everything in one place and to include it in the Table of Contents.
+    \subsection*{Abstract\addcontentsline{toc}{chapter}{Abstract}\thispagestyle{empty}}
+    \input{src/sections/abstract}
+
+        % List of papers
+        \chapter*{List of Papers\addcontentsline{toc}{chapter}{List of papers}}
+        \thispagestyle{empty}
+        \addtocounter{page}{6} % Accounting for left-aligned page and open right for dirt title, title, dedication
+        \input{src/sections/list_of_papers}
+
+        % Acknowledgements
+        \blankpage
+        \chapter*{Acknowledgements}
+        \thispagestyle{empty}
+        \addcontentsline{toc}{chapter}{Acknowledgements}
+        \input{src/sections/acknowledgements}
+        \cleardoublepage
+
+        % Table of contents
+        \tableofcontents
+        \thispagestyle{empty}
+        \clearpage
+
+    % Thesis introduction
+    \mainmatter
+    \pagestyle{plain}
+    \part{Introduction}
+    \label{part:introduction}
+
+        \chapter{The first chapter}
+        \label{ch:first_chapter_label}
+        \input{src/sections/introduction/chapter_1}
+
+        \chapter{The second chapter}
+        \label{ch:second_chapter_label}
+        \input{src/sections/introduction/chapter_2}
+
+            \section{A section}
+            \label{sec:exponential_families}
+            \input{src/sections/introduction/second_chapter/a_section}
+        \newpage
+        \chapter{Overview of papers}
+        \label{ch:overview}
+
+            \section{Paper I}
+            \label{sec:paper_i}
+            \input{src/sections/introduction/overview_of_papers/paper_i}
+
+        \chapter*{Sammanfattning på svenska}
+        \label{ch:sammanfattning}
+        \addcontentsline{toc}{chapter}{Sammanfattning på svenska}
+        \input{src/sections/sammanfattning}
+
+        \newpage
+        \addcontentsline{toc}{chapter}{Bibliography}
+        \printbibliography
+
+    % Papers
+    \part{Papers}\label{part:papers}
+
+        \part*{Paper I\addcontentsline{toc}{section}{Paper I}}
+        \includepdf[pages=-, pagecommand={\thispagestyle{plain}}]{src/papers/paper_1.pdf}
+
+\end{document}

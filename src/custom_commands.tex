@@ -1,0 +1,75 @@
+% Official Stockholm University colors
+\definecolor{darkgray}{RGB}{76, 76, 76}
+\definecolor{darkblue}{RGB}{0, 47, 95}
+\definecolor{green}{RGB}{73, 153, 67}
+\definecolor{fireorange}{RGB}{235, 113, 37}
+\definecolor{waterblue}{RGB}{155, 178, 206}
+\definecolor{red}{RGB}{176, 0, 32}
+\definecolor{skyblue}{RGB}{172, 222, 230}
+% The remaining colors are not official but match and contrast the former
+\definecolor{purple}{RGB}{153, 0, 153}
+\definecolor{yellow}{RGB}{255, 204, 0}
+\definecolor{teal}{RGB}{0, 128, 128}
+
+% Blank page command for the layout
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \afterpage{\null\thispagestyle{empty}\newpage}
+}
+
+% Redefine some commands to remove page labels
+\makeatletter
+\renewcommand{\cleardoublepage}{%
+  \clearpage
+  \if@twoside
+    \ifodd\c@page
+    \else
+      \hbox{}
+      \thispagestyle{empty}
+      \newpage
+    \fi
+  \fi
+}
+\makeatother
+\patchcmd{\part}{\thispagestyle{plain}}{\thispagestyle{empty}}{}{}
+\renewcommand{\cftaftertoctitle}{\thispagestyle{empty}}
+
+% Full cite command for the list of papers
+\newrobustcmd{\fullciteall}[1]{%
+  \AtNextCite{\defcounter{maxnames}{4}}%
+  \fullcite{#1}%
+}
+
+
+% Notation (edit as you like)
+\newcommand{\bg}{\boldsymbol{g}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bnu}{\boldsymbol{\nu}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bTheta}{\boldsymbol{\Theta}}
+\newcommand{\blambda}{\boldsymbol{\lambda}}
+\newcommand{\bLambda}{\boldsymbol{\Lambda}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\bpsi}{\boldsymbol{\psi}}
+\newcommand{\bPsi}{\boldsymbol{\Psi}}
+\newcommand{\bphi}{\boldsymbol{\phi}}
+\newcommand{\bPhi}{\boldsymbol{\Phi}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bAlpha}{\boldsymbol{A}}
+\newcommand{\bNu}{\boldsymbol{N}}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\bGamma}{\boldsymbol{\Gamma}}
+\newcommand{\bxi}{\boldsymbol{\xi}}
+\newcommand{\bXi}{\boldsymbol{\Xi}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
+% Theorems (edit as you like)
+\newtheorem{remark}{Remark}[chapter]
