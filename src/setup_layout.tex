@@ -1,0 +1,29 @@
+% Document style
+\geometry{
+  paperheight=242mm,
+  paperwidth=165mm,
+  left=22.5mm,
+  right=22.5mm,
+  top=22.5mm,
+  bottom=22.5mm
+}
+\setlength{\parskip}{2mm}
+\setlength{\parindent}{0mm}
+\counterwithin*{equation}{chapter}
+\setcounter{secnumdepth}{3}
+
+% Plots and figures
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{shapes,arrows.meta, positioning}
+
+% Change the layout of citations
+\DeclareFieldFormat[article,misc]{title}{#1} % Regular font for titles
+\DeclareFieldFormat[article,misc]{journaltitle}{\mkbibitalic{#1}} % Italicize journal names
+\DeclareFieldFormat[article,misc]{howpublished}{\mkbibitalic{#1}} % Italicize preprint pages
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{default}{family-given}
+\renewbibmacro{in:}{}
+
+% PDF inclusion
+\pdfoptionpdfminorversion=7

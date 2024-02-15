@@ -300,6 +300,11 @@ TSWLatexianTemp*
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
 
+# Ignore compiled folders
+interim/
+out/
+
+# Ignore setting and Mac system files
 .idea/
 .DS_Store
 ```

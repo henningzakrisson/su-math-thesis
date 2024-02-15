@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+    scale=0.9,
+    >=Stealth, 
+    node distance=2cm, 
+    level distance=2.5cm,
+    level 1/.style={sibling distance=5cm},
+    level 2/.style={sibling distance=2.5cm},
+    decision/.style={ellipse, minimum width=0.5cm, minimum height=1cm, draw=darkgray, fill=green, text=black, align=center},
+    outcome/.style={text=black, align=center}
+]
+
+\node [decision] (root) {What is the answer to this question?}
+    child {node [decision] {Did you just lie?}
+        child {node [outcome] {Ok.} edge from parent[-{Latex[]},sloped,above,midway,node distance=1.2cm] node{no}}
+        child {node [outcome] {Good.} edge from parent[-{Latex[]},sloped,above,midway,node distance=1.2cm] node{yes}}
+        edge from parent[-{Latex[]},sloped,above,midway,node distance=1.2cm] node{I know.}
+    }
+    child {node [decision] {\(x_{2} \leq 5.0\)?}
+        child {node [outcome] {\(-0.45\)} edge from parent[-{Latex[]},sloped,above,midway,node distance=1.2cm] node{no}}
+        child {node [outcome] {I don't understand} edge from parent[-{Latex[]},sloped,above,midway,node distance=1.2cm] node{yes}}
+        edge from parent[-{Latex[]},sloped,above,midway,node distance=1.2cm] node{repeat}
+    };
+
+\node[above=of root, yshift=-1.3cm] (input) {\(\boldsymbol{x}\)};
+\draw[->] (input) -- (root);
+\end{tikzpicture}

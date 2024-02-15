@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Ensure input and output paths are provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <input_pdf> <output_pdf>"
+    exit 1
+fi
+
+# Extract input and output paths
+input_pdf="$1"
+output_pdf="$2"
+
+# Run Ghostscript command
+gs -sOutputFile="$output_pdf" -sDEVICE=pdfwrite -dBlackText -dBlackVector -dNOPAUSE -dBATCH "$input_pdf"
+
+# Comment on how to run this script
+: '
+To run this script from the command line, use the following command:
+
+    ./decolor_hyperlinks.sh <input_pdf> <output_pdf>
+
+Replace <input_pdf> with the path to your input PDF file and <output_pdf> with the desired path for the output PDF.
+
+Example:
+    ./decolor_hyperlinks.sh src/paper_2.pdf output.pdf
+'
