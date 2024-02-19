@@ -7,7 +7,7 @@
 \textbf{Initialize} \(\hat{y}^{(0)} = \hat{y}\)
 %
 \[
-	\hat{y} = \argmin_{y \in \mathcal{Y}} \sum_{i=1}^n \ell(y;\by_i)
+	\hat{y} = \mathoperator{argmin}_{y \in \mathcal{Y}} \sum_{i=1}^n \mathcal{L}(y;\by_i)
 \]
 %
 
@@ -17,7 +17,8 @@
 	\begin{enumerate}
 		\item \textbf{Find}
 		\[
-			\hat{y}^{(k+1)} = \argmin_{y \in \mathcal{Y}} \sum_{i=1}^n \ell(y;\by_i) + \sum_{i=1}^n \left( \hat{A}_l \cdot \nabla \ell(\hat{y}^{(k)};\by_i) \right) \cdot \left( y - \hat{y}^{(k)} \right)
+			\hat{y}^{(k+1)} = \mathoperator{argmin}__{y \in \mathcal{Y}} \sum_{i=1}^n \mathcal{L}(y;\by_i)
+			+ \sum_{i=1}^n \epsilon_k \mathcal{I}(y \neq \hat{y}^{(k)})
 		\]
 		\item \textbf{Stack}
 		\[
