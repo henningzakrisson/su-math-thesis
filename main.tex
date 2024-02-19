@@ -19,8 +19,12 @@
     % Note that the abstract here is just a placeholder.
     % The printed thesis will replace the abstract with the "spikblad" but it is included
     % here to keep everything in one place and to include it in the Table of Contents.
+    % The spikblad allows for 3500 characters in the abstract. The geometry specified here
+    % is to make around 3500 characters fit on one page.
+    \newgeometry{left=0.8cm,right=0.8cm,top=1.5cm}
     \subsection*{Abstract\addcontentsline{toc}{chapter}{Abstract}\thispagestyle{empty}}
     \input{src/sections/abstract}
+    \restoregeometry
 
         % List of papers
         \chapter*{List of Papers\addcontentsline{toc}{chapter}{List of papers}}
