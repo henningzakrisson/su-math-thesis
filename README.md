@@ -143,7 +143,21 @@ The `src` folder is where to put all the source code for the thesis.
 I suggest using a folder structure that makes sense to you, and that you are consistent with it.
 Add chapters, sections, and subsections to the thesis by using the `input` command in `main.tex`.
 You can see in the dummy example how this is done.
+
 If you add new sources, make sure to add them to the `bibliography.bib` file.
+
+The page numbering of the frontmatter will be (non-printed) roman numerals
+(meaning they only show up in the table of contents and not on the pages themselves).
+The rest of the thesis will have arabic numerals, with the numbering stopping
+at the end of Part I unless Step 4 is performed.
+Note that the number of pages between the abstract and List of papers will differ
+depending on whether or not you have a dedication page and an optional quote.
+On line 32 in `main.tex`, the command
+```latex
+\setcounter{page}{X}
+```
+adjusts the page numbering to account for this. If you do not use a dedication page or a quote,
+this should be set to 4. If you use one of them, it should be set to 6, and if you use both, it should be set to 8.
 
 ### Step 4: Preprocess the papers (optional)
 If you want the page numbering to be consistent throughout the entire thesis, you can add the papers to the 
