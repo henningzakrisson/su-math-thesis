@@ -172,9 +172,9 @@ def main():
             end_pages["frontmatter"] = page_labels[i - 1]
             break
 
-    # The introduction is up until the first paper minus one, or to the end
+    # The introduction is up until the first paper minus three, or to the end
     if n_papers > 0:
-        end_pages["introduction"] = start_pages["paper_1"] - 1
+        end_pages["introduction"] = start_pages["paper_1"] - 3
     else:
         end_pages["introduction"] = page_labels[-1]
 
